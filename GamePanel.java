@@ -16,6 +16,21 @@ public class GamePanel extends JPanel {
     @Override 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        // گرفتن صفحه بازی از کلاس است 
+        Tile[][] board = game.getBoard().getBoard();
+        // پیمایش تمام خانه های صفحه 
+        for(int row = 0; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+                // اگر خانه تیره باشد 
+                if(board[row][col].isDark()){
+                    g.setColor(Color.DARK_GRAY);
+                }else{ // اگر خانه روشن باشد 
+                    g.setColor(Color.WHITE);
+                }
+                // رسم کردن خانه ها و اندازه آن ها 
+                g.fillRect(col * 80, row * 80, 80, 80);
+            }
+        }
     }
          // اندازه پنل بازی 
     @Override 
