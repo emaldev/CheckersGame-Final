@@ -14,7 +14,7 @@ public class Player {
         return id;
     }
 
-    // بغییر شناسه بازیکن 
+    // تغییر  شناسه بازیکن 
     public void setId(String id){
         this.id = id;
     }
