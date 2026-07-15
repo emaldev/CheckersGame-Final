@@ -31,7 +31,27 @@ public class GamePanel extends JPanel {
                 g.fillRect(col * 80, row * 80, 80, 80);
             }
         }
+        // رسم مهره های بازی 
+        // پیمایش تمام خانه های صفحه 
+        for(int row = 0; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+                // اگر این خانه مهره بازیکن اول باشد 
+            if(board[row][col].getStatus() == 1){
+                // رسم مهره 
+                g.setColor(Color.CYAN);
+                 // رسم  مهره 
+                g.fillOval(col * 80 + 8, row * 80 + 8, 64, 64);
+            }else if(board[row][col].getStatus() == 2){
+                // رسم مهره 
+                g.setColor(Color.ORANGE);
+                     // رسم مهره 
+                g.fillOval(col * 80 + 8, row * 80 + 8, 64, 64);
+            }
+
+        }
     }
+    }
+    
          // اندازه پنل بازی 
     @Override 
     public java.awt.Dimension getPreferredSize(){
