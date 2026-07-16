@@ -27,6 +27,7 @@ public class GamePanel extends JPanel {
                 if(game.getBoard().getBoard()[row][col].getStatus() != 0){
                     selectedRow = row;
                     selectedCol = col;
+                    System.out.println("Selected: " + selectedRow + ", " + selectedCol);
                     repaint();
                 }
             }
@@ -67,6 +68,11 @@ public class GamePanel extends JPanel {
                 g.setColor(Color.ORANGE);
                      // رسم مهره 
                 g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
+            }
+            if(row == selectedRow && col == selectedCol){
+                g.setColor(Color.GREEN);
+
+                g.drawRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
 
         }
