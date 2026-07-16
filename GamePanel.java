@@ -6,10 +6,31 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel {
     
     private Game game;
+     // اندازه هر خانه از صفحه 
+    private final int TILE_SIZE = 80;
+    // مهره سطر برای انتخاب 
+    private int selectedRow = -1;
+    // انتخاب مهره ستون 
+    private int selectedCol = -1;
+   
     
     // سازنده 
     public GamePanel(Game game){
         this.game = game;
+
+        this.addMouseListener(new java.awt.event.MouseAdapter(){
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e){
+                int col = e.getX() / TILE_SIZE;
+                int row = e.getY() / TILE_SIZE;
+
+                if(game.getBoard().getBoard()[row][col].getStatus() != 0){
+                    selectedRow = row;
+                    selectedCol = col;
+                    repaint();
+                }
+            }
+        });
     }
 
     // رسم صفحه بازی 
@@ -45,7 +66,7 @@ public class GamePanel extends JPanel {
                 // رسم مهره 
                 g.setColor(Color.ORANGE);
                      // رسم مهره 
-                g.fillOval(col * 80 + 8, row * 80 + 8, 64, 64);
+                g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
             }
 
         }
