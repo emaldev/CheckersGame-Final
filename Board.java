@@ -11,6 +11,7 @@ public class Board {
         board = new Tile[8][8];
         // مقدار دهی کردن تمام خانه ها 
         createBoard();
+        setupPieces();
 
 
     }
@@ -24,6 +25,28 @@ public class Board {
                 boolean dark = (row + col) % 2 != 0;
                  // ساخت خانه  
                 board[row][col] = new Tile(dark, row, col);
+            }
+        }
+    }
+
+    // قرار دادان مهره ها در صفحه 
+    private void setupPieces(){
+        // مهره بازیکن اول 
+        for(int row = 0; row < 3; row++){
+            for(int col = 0; col < 8; col++){
+                // شرط فقط روی خانه هاب تیره 
+                if(board[row][col].isDark()){
+                    board[row][col].setStatus(1);
+                }
+            }
+        }
+        // قرار دادن مهره های بازیکن دوم 
+        for(int row = 5; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+                // روی خانه های تیره قرار بده 
+                if(board[row][col].isDark()){
+                    board[row][col].setStatus(2);
+                }
             }
         }
     }
