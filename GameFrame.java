@@ -7,7 +7,7 @@ public class GameFrame extends JFrame{
     public GameFrame(Game game){
         this.setTitle("Checkers Game");
         // اضافه کردن صفحه بازی 
-        this.add(new GamePanel());// اتصال به گیم پنل 
+        this.add(new GamePanel(game));// اتصال به گیم پنل 
          // تنظیم اندازه پنجره 
         this.pack();
         // مکان قرار گرفتن پنجره 
