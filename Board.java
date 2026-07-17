@@ -133,6 +133,26 @@ public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
             }
         }
     }
+    // حرکت شاه بازیکن اول
+if(piece == 3){
+
+    if(Math.abs(toRow - fromRow) == 1 &&
+       Math.abs(toCol - fromCol) == 1){
+
+        return true;
+    }
+}
+
+
+// حرکت شاه بازیکن دوم
+if(piece == 4){
+
+    if(Math.abs(toRow - fromRow) == 1 &&
+       Math.abs(toCol - fromCol) == 1){
+
+        return true;
+    }
+}
 
 
     return false;

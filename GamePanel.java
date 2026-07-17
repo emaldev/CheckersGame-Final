@@ -45,13 +45,13 @@ public class GamePanel extends JPanel {
 
     int piece = game.getBoard().getBoard()[row][col].getStatus();
 
-    if(piece == 1 && !game.getCurrentPlayer().getId().equals("Player 1")){
-        return;
-    }
+   if((piece == 1 || piece == 3) && !game.getCurrentPlayer().getId().equals("Player 1")){
+    return;
+}
 
-    if(piece == 2 && !game.getCurrentPlayer().getId().equals("Player 2")){
-        return;
-    }
+if((piece == 2 || piece == 4) && !game.getCurrentPlayer().getId().equals("Player 2")){
+    return;
+}
 
     selectedRow = row;
     selectedCol = col;
