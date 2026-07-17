@@ -20,49 +20,73 @@ public class GamePanel extends JPanel {
 
         this.addMouseListener(new java.awt.event.MouseAdapter(){
             @Override
-            public void mousePressed(java.awt.event.MouseEvent e){
-                int col = e.getX() / TILE_SIZE;
-                int row = e.getY() / TILE_SIZE;
-              
-   
-                
-                    // اگر قبلا مهره انتخاب شده باشد 
-                  if(selectedRow != -1 && selectedCol != -1){
-                    // حرکت مهره 
-                     if(game.getBoard().getBoard()[row][col].getStatus() == 0){
-                          if(game.getBoard().isValidMove(selectedRow, selectedCol, row, col)){
-                          game.getBoard().movePiece(selectedRow, selectedCol, row, col);
-  
-                            game.changeTurn();
-                           }
-                       selectedRow = -1;
-                       selectedCol = -1;
-                       repaint();
-                         return;
-                       }
-                   }
-                   if(game.getBoard().getBoard()[row][col].getStatus() != 0){
+public void mousePressed(java.awt.event.MouseEvent e){
 
+    int col = e.getX() / TILE_SIZE;
+    int row = e.getY() / TILE_SIZE;
+
+
+    // اگر مهره قبلا انتخاب شده باشد
+    if(selectedRow != -1 && selectedCol != -1){
+
+        if(game.getBoard().isValidMove(selectedRow, selectedCol, row, col)){
+
+            game.getBoard().movePiece(selectedRow, selectedCol, row, col);
+
+
+            if(game.isGameOver()){
+
+                javax.swing.JOptionPane.showMessageDialog(
+    GamePanel.this,
+    game.checkWinner()
+);
+            }else{
+
+                game.changeTurn();
+            }
+        }
+
+        selectedRow = -1;
+        selectedCol = -1;
+        repaint();
+        return;
+    }
+
+
+
+    // انتخاب مهره جدید
     int piece = game.getBoard().getBoard()[row][col].getStatus();
 
-   if((piece == 1 || piece == 3) && !game.getCurrentPlayer().getId().equals("Player 1")){
-    return;
-}
 
-if((piece == 2 || piece == 4) && !game.getCurrentPlayer().getId().equals("Player 2")){
-    return;
-}
+    if(piece != 0){
 
-    selectedRow = row;
-    selectedCol = col;
 
-    repaint();
+        // نوبت بازیکن اول
+        if((piece == 1 || piece == 3) &&
+           !game.getCurrentPlayer().getId().equals("Player 1")){
 
-                }
-                
-           }
-        });
+            return;
+        }
+
+
+        // نوبت بازیکن دوم
+        if((piece == 2 || piece == 4) &&
+           !game.getCurrentPlayer().getId().equals("Player 2")){
+
+            return;
+        }
+
+        selectedRow = row;
+        selectedCol = col;
+
+        repaint();
     }
+    
+    }
+
+}); 
+}
+
 
     // رسم صفحه بازی 
     @Override 

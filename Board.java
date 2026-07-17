@@ -237,6 +237,42 @@ public boolean hasPieces(int player){
 
     return false;
 }
+public boolean hasAnyMove(int player){
+
+    for(int row = 0; row < 8; row++){
+        for(int col = 0; col < 8; col++){
+
+            int piece = board[row][col].getStatus();
+
+            if(player == 1 && (piece == 1 || piece == 3)){
+
+                for(int r = row - 2; r <= row + 2; r++){
+                    for(int c = col - 2; c <= col + 2; c++){
+
+                        if(isValidMove(row,col,r,c)){
+                            return true;
+                        }
+                    }
+                }
+            }
+
+
+            if(player == 2 && (piece == 2 || piece == 4)){
+
+                for(int r = row - 2; r <= row + 2; r++){
+                    for(int c = col - 2; c <= col + 2; c++){
+
+                        if(isValidMove(row,col,r,c)){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
     
     
 }
