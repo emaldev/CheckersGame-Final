@@ -49,16 +49,25 @@ public class Game {
         return true;
     }
 
+    if(!board.hasAnyMove(1)){
+        return true;
+    }
+
+    if(!board.hasAnyMove(2)){
+        return true;
+    }
+
     return false;
 }
+ 
     // بررسی برنده
 public String checkWinner(){
 
-    if(!board.hasPieces(1)){
+    if(!board.hasPieces(1) || !board.hasAnyMove(1)){
         return "Player 2 Wins!";
     }
 
-    if(!board.hasPieces(2)){
+    if(!board.hasPieces(2) || !board.hasAnyMove(2)){
         return "Player 1 Wins!";
     }
 
