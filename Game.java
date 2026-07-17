@@ -21,7 +21,6 @@ public class Game {
     currentPlayer = players[0];
 
     
-    
     }
 
     // برگرداندن صفحه بازی 

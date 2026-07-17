@@ -59,6 +59,51 @@ public class Board {
     public Tile getTile(int row, int col){
         return board[row][col];
     }
+    // بررسی معتبر بودن حرکت
+public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
+
+    // خانه مقصد باید خالی باشد
+    if (board[toRow][toCol].getStatus() != 0) {
+        return false;
+    }
+
+    int piece = board[fromRow][fromCol].getStatus();
+
+    // مهره بازیکن اول
+    if (piece == 1) {
+
+        if (toRow == fromRow + 1 &&
+            (toCol == fromCol - 1 || toCol == fromCol + 1)) {
+
+            return true;
+        }
+
+    }
+
+    // مهره بازیکن دوم
+    if (piece == 2) {
+
+        if (toRow == fromRow - 1 &&
+            (toCol == fromCol - 1 || toCol == fromCol + 1)) {
+
+            return true;
+        }
+
+    }
+
+    return false;
+}
+
+// انتقال مهره
+public void movePiece(int fromRow, int fromCol, int toRow, int toCol) {
+
+    int piece = board[fromRow][fromCol].getStatus();
+
+    board[toRow][toCol].setStatus(piece);
+
+    board[fromRow][fromCol].setStatus(0);
+
+}
     
     
 }

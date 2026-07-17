@@ -23,13 +23,29 @@ public class GamePanel extends JPanel {
             public void mousePressed(java.awt.event.MouseEvent e){
                 int col = e.getX() / TILE_SIZE;
                 int row = e.getY() / TILE_SIZE;
-
+                
+                    // اگر قبلا مهره انتخاب شده باشد 
+                  if(selectedRow != -1 && selectedCol != -1){
+                    // حرکت مهره 
+                     if(game.getBoard().getBoard()[row][col].getStatus() == 0){
+                          if(game.getBoard().isValidMove(selectedRow, selectedCol, row, col)){
+                           game.getBoard().movePiece((selectedRow, selectedCol, row, col));
+  
+                            game.changeTurn();
+                           }
+                       selectedRow = -1;
+                       selectedCol = -1;
+                       repaint();
+                         return;
+                       }
+                   }
                 if(game.getBoard().getBoard()[row][col].getStatus() != 0){
                     selectedRow = row;
                     selectedCol = col;
                     System.out.println("Selected: " + selectedRow + ", " + selectedCol);
                     repaint();
                 }
+                
             }
         });
     }
@@ -77,7 +93,7 @@ public class GamePanel extends JPanel {
 
         }
     }
-    }
+}
     
          // اندازه پنل بازی 
     @Override 
