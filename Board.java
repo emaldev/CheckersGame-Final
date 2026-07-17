@@ -61,6 +61,7 @@ public class Board {
     }
     // بررسی معتبر بودن حرکت
 // بررسی معتبر بودن حرکت
+// بررسی معتبر بودن حرکت
 public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
 
     // خارج از صفحه
@@ -68,32 +69,71 @@ public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
         return false;
     }
 
-    // خانه مقصد باید خالی باشد
-    if (board[toRow][toCol].getStatus() != 0) {
+    int piece = board[fromRow][fromCol].getStatus();
+
+    // خانه مبدا باید مهره داشته باشد
+    if(piece == 0){
         return false;
     }
 
-    int piece = board[fromRow][fromCol].getStatus();
 
-    // حرکت بازیکن اول
-    if (piece == 1) {
+    // حرکت معمولی فقط به خانه خالی
+    if(board[toRow][toCol].getStatus() == 0){
 
-        if (toRow == fromRow + 1 &&
-            Math.abs(toCol - fromCol) == 1) {
-            return true;
+        // حرکت بازیکن اول
+        if(piece == 1){
+
+            if(toRow == fromRow + 1 &&
+               Math.abs(toCol - fromCol) == 1){
+                return true;
+            }
         }
 
-    }
 
-    // حرکت بازیکن دوم
-    if (piece == 2) {
+        // حرکت بازیکن دوم
+        if(piece == 2){
 
-        if (toRow == fromRow - 1 &&
-            Math.abs(toCol - fromCol) == 1) {
-            return true;
+            if(toRow == fromRow - 1 &&
+               Math.abs(toCol - fromCol) == 1){
+                return true;
+            }
         }
-
     }
+
+
+
+    // خوردن مهره بازیکن اول
+    if(piece == 1){
+
+        if(toRow == fromRow + 2 &&
+           Math.abs(toCol - fromCol) == 2){
+
+            int middleRow = (fromRow + toRow) / 2;
+            int middleCol = (fromCol + toCol) / 2;
+
+            if(board[middleRow][middleCol].getStatus() == 2){
+                return true;
+            }
+        }
+    }
+
+
+
+    // خوردن مهره بازیکن دوم
+    if(piece == 2){
+
+        if(toRow == fromRow - 2 &&
+           Math.abs(toCol - fromCol) == 2){
+
+            int middleRow = (fromRow + toRow) / 2;
+            int middleCol = (fromCol + toCol) / 2;
+
+            if(board[middleRow][middleCol].getStatus() == 1){
+                return true;
+            }
+        }
+    }
+
 
     return false;
 }
@@ -106,6 +146,16 @@ public void movePiece(int fromRow, int fromCol, int toRow, int toCol) {
     board[toRow][toCol].setStatus(piece);
 
     board[fromRow][fromCol].setStatus(0);
+
+
+    // اگر حرکت دو خانه بود، مهره وسط حذف شود
+    if(Math.abs(toRow - fromRow) == 2){
+
+        int middleRow = (fromRow + toRow) / 2;
+        int middleCol = (fromCol + toCol) / 2;
+
+        board[middleRow][middleCol].setStatus(0);
+    }
 
 }
     
