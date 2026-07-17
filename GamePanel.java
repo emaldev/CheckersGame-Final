@@ -12,6 +12,8 @@ public class GamePanel extends JPanel {
     private int selectedRow = -1;
     // انتخاب مهره ستون 
     private int selectedCol = -1;
+
+    private final int INFO_HEIGHT = 40;
    
     
     // سازنده 
@@ -92,6 +94,8 @@ public void mousePressed(java.awt.event.MouseEvent e){
     @Override 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        // نمایش نوبت بازیکن
+
         // گرفتن صفحه بازی از کلاس است 
         Tile[][] board = game.getBoard().getBoard();
         // پیمایش تمام خانه های صفحه 
@@ -145,12 +149,22 @@ public void mousePressed(java.awt.event.MouseEvent e){
 
         }
     }
+    // نمایش نوبت بازیکن
+g.setColor(Color.BLACK);
+g.drawString(
+    "Turn: " + game.getCurrentPlayer().getId(),
+    10,
+    20
+);
+    
 }
     
          // اندازه پنل بازی 
     @Override 
     public java.awt.Dimension getPreferredSize(){
+        
         return new java.awt.Dimension(640, 640);
+        
     }
 
   
