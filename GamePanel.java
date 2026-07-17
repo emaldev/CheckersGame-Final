@@ -23,13 +23,23 @@ public class GamePanel extends JPanel {
             public void mousePressed(java.awt.event.MouseEvent e){
                 int col = e.getX() / TILE_SIZE;
                 int row = e.getY() / TILE_SIZE;
+                // فقط بازیکنی که نوبتش است بتواند مهره خودش را انتخاب کند
+                int piece = game.getBoard().getBoard()[row][col].getStatus();
+
+                if (piece == 1 && !game.getCurrentPlayer().getId().equals("Player 1")) {
+                 return;
+                  }
+
+               if (piece == 2 && !game.getCurrentPlayer().getId().equals("Player 2")) {
+               return;
+                  }
                 
                     // اگر قبلا مهره انتخاب شده باشد 
                   if(selectedRow != -1 && selectedCol != -1){
                     // حرکت مهره 
                      if(game.getBoard().getBoard()[row][col].getStatus() == 0){
                           if(game.getBoard().isValidMove(selectedRow, selectedCol, row, col)){
-                           game.getBoard().movePiece((selectedRow, selectedCol, row, col));
+                          game.getBoard().movePiece(selectedRow, selectedCol, row, col);
   
                             game.changeTurn();
                            }

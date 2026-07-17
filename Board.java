@@ -60,7 +60,13 @@ public class Board {
         return board[row][col];
     }
     // بررسی معتبر بودن حرکت
+// بررسی معتبر بودن حرکت
 public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
+
+    // خارج از صفحه
+    if (toRow < 0 || toRow > 7 || toCol < 0 || toCol > 7) {
+        return false;
+    }
 
     // خانه مقصد باید خالی باشد
     if (board[toRow][toCol].getStatus() != 0) {
@@ -69,23 +75,21 @@ public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
 
     int piece = board[fromRow][fromCol].getStatus();
 
-    // مهره بازیکن اول
+    // حرکت بازیکن اول
     if (piece == 1) {
 
         if (toRow == fromRow + 1 &&
-            (toCol == fromCol - 1 || toCol == fromCol + 1)) {
-
+            Math.abs(toCol - fromCol) == 1) {
             return true;
         }
 
     }
 
-    // مهره بازیکن دوم
+    // حرکت بازیکن دوم
     if (piece == 2) {
 
         if (toRow == fromRow - 1 &&
-            (toCol == fromCol - 1 || toCol == fromCol + 1)) {
-
+            Math.abs(toCol - fromCol) == 1) {
             return true;
         }
 
