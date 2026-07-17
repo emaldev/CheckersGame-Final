@@ -39,4 +39,29 @@ public class Game {
             currentPlayer = players[0];
         }
     }
+    public boolean isGameOver(){
+
+    if(!board.hasPieces(1)){
+        return true;
+    }
+
+    if(!board.hasPieces(2)){
+        return true;
+    }
+
+    return false;
+}
+    // بررسی برنده
+public String checkWinner(){
+
+    if(!board.hasPieces(1)){
+        return "Player 2 Wins!";
+    }
+
+    if(!board.hasPieces(2)){
+        return "Player 1 Wins!";
+    }
+
+    return null;
+}
 }
