@@ -156,6 +156,15 @@ public void movePiece(int fromRow, int fromCol, int toRow, int toCol) {
 
         board[middleRow][middleCol].setStatus(0);
     }
+    // شاه شدن مهره بازیکن اول
+if(piece == 1 && toRow == 7){
+    board[toRow][toCol].setStatus(3);
+}
+
+// شاه شدن مهره بازیکن دوم
+if(piece == 2 && toRow == 0){
+    board[toRow][toCol].setStatus(4);
+}
 
 }
     

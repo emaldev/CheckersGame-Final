@@ -87,18 +87,32 @@ public class GamePanel extends JPanel {
         // پیمایش تمام خانه های صفحه 
         for(int row = 0; row < 8; row++){
             for(int col = 0; col < 8; col++){
-                // اگر این خانه مهره بازیکن اول باشد 
-            if(board[row][col].getStatus() == 1){
-                // رسم مهره 
-                g.setColor(Color.CYAN);
-                 // رسم  مهره 
-                g.fillOval(col * 80 + 8, row * 80 + 8, 64, 64);
-            }else if(board[row][col].getStatus() == 2){
-                // رسم مهره 
-                g.setColor(Color.ORANGE);
-                     // رسم مهره 
-                g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
-            }
+        if(board[row][col].getStatus() == 1){
+    // مهره بازیکن اول
+    g.setColor(Color.CYAN);
+    g.fillOval(col * 80 + 8, row * 80 + 8, 64, 64);
+
+}else if(board[row][col].getStatus() == 2){
+    // مهره بازیکن دوم
+    g.setColor(Color.ORANGE);
+    g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
+
+}else if(board[row][col].getStatus() == 3){
+    // شاه بازیکن اول
+    g.setColor(Color.CYAN);
+    g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
+
+    g.setColor(Color.BLACK);
+    g.drawString("K", col * TILE_SIZE + 35, row * TILE_SIZE + 45);
+
+}else if(board[row][col].getStatus() == 4){
+    // شاه بازیکن دوم
+    g.setColor(Color.ORANGE);
+    g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, TILE_SIZE - 16, TILE_SIZE - 16);
+
+    g.setColor(Color.BLACK);
+    g.drawString("K", col * TILE_SIZE + 35, row * TILE_SIZE + 45);
+}
             if(row == selectedRow && col == selectedCol){
                 g.setColor(Color.GREEN);
 
