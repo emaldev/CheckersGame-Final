@@ -59,8 +59,7 @@ public class Board {
     public Tile getTile(int row, int col){
         return board[row][col];
     }
-    // بررسی معتبر بودن حرکت
-// بررسی معتبر بودن حرکت
+ 
 // بررسی معتبر بودن حرکت
 public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
 
