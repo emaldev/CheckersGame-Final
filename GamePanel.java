@@ -39,9 +39,9 @@ public void mousePressed(java.awt.event.MouseEvent e){
             if(game.isGameOver()){
 
                 javax.swing.JOptionPane.showMessageDialog(
-    GamePanel.this,
-    game.checkWinner()
-);
+                GamePanel.this,
+                game.checkWinner()
+                 );
             }else{
 
                 game.changeTurn();
@@ -94,7 +94,7 @@ public void mousePressed(java.awt.event.MouseEvent e){
     @Override 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        // نمایش نوبت بازیکن
+       
 
         // گرفتن صفحه بازی از کلاس است 
         Tile[][] board = game.getBoard().getBoard();
