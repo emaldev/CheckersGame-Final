@@ -67,6 +67,12 @@ You can add screenshots here.
 
 Example:
 <img width="1914" height="2016" alt="image" src="https://github.com/user-attachments/assets/80e3b7f9-601c-482e-ab8f-f93a05bd49e3" />
+<img width="1911" height="1992" alt="image" src="https://github.com/user-attachments/assets/930e6921-308e-474d-9d14-be020faf967f" />
+
+
+
+<img width="1926" height="2013" alt="image" src="https://github.com/user-attachments/assets/cfa71b9e-a195-4b32-89ee-f79b8ff69f2c" />
+
 
 
 
