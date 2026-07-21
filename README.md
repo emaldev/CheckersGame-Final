@@ -71,7 +71,7 @@ Example:
 #2
 
 
-<img width="1911" height="1992" alt="image" src="https://github.com/user-attachments/assets/930e6921-308e-474d-9d14-be020faf967f" 
+
 
 
   
